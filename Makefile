@@ -5,11 +5,11 @@ PREFIX = /usr/local
 CFG = $(wildcard cfg/*.cfg)
 
 MTHEME = \
-	$(wildcard artemisos-live/*.png) \
-	artemisos-live/theme.txt \
-	artemisos-live/*.pf2
+	$(wildcard artemisos/*.png) \
+	artemisos/theme.txt \
+	artemisos/*.pf2
 
-MICONS= $(wildcard artemisos-live/icons/*.png)
+MICONS= $(wildcard artemisos/icons/*.png)
 
 TZ = $(wildcard tz/*)
 
@@ -31,15 +31,15 @@ uninstall_common:
 	for f in ${LOCALES}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/locales/$$f; done
 
 install_artemisos:
-	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live
-	install -m0644 ${MTHEME} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live
+	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos
+	install -m0644 ${MTHEME} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos
 
-	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live/icons
-	install -m0644 ${MICONS} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live/icons
+	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos/icons
+	install -m0644 ${MICONS} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos/icons
 
 uninstall_artemisos:
-	for f in ${MTHEME}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/$$f; done
-	for f in ${MICONS}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/icons/$$f; done
+	for f in ${MTHEME}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos/$$f; done
+	for f in ${MICONS}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos/icons/$$f; done
 
 install: install_common install_artemisos
 
