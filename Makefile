@@ -30,20 +30,20 @@ uninstall_common:
 	for f in ${TZ}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/tz/$$f; done
 	for f in ${LOCALES}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/locales/$$f; done
 
-install_artemisos-live:
+install_artemisos:
 	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live
 	install -m0644 ${MTHEME} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live
 
 	install -dm0755 $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live/icons
 	install -m0644 ${MICONS} $(DESTDIR)$(PREFIX)/share/grub/themes/artemisos-live/icons
 
-uninstall_artemisos-live:
+uninstall_artemisos:
 	for f in ${MTHEME}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/$$f; done
 	for f in ${MICONS}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/icons/$$f; done
 
-install: install_common install_artemisos-live
+install: install_common install_artemisos
 
-uninstall: uninstall_common uninstall_artemisos-live
+uninstall: uninstall_common uninstall_artemisos
 
 dist:
 	git archive --format=tar --prefix=grub-theme-$(Version)/ $(Version) | gzip -9 > grub-theme-$(Version).tar.gz
