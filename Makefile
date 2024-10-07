@@ -41,9 +41,9 @@ uninstall_artemisos-live:
 	for f in ${MTHEME}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/$$f; done
 	for f in ${MICONS}; do rm -f $(DESTDIR)$(PREFIX)/share/grub/theme/artemisos-live/icons/$$f; done
 
-install: install_common install_artemisos
+install: install_common install_artemisos-live
 
-uninstall: uninstall_common uninstall_artemisos
+uninstall: uninstall_common uninstall_artemisos-live
 
 dist:
 	git archive --format=tar --prefix=grub-theme-$(Version)/ $(Version) | gzip -9 > grub-theme-$(Version).tar.gz
